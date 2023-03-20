@@ -1,24 +1,26 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Calltracks Test
 
-Things you may want to cover:
+### Requirements
+Ruby v 3.0.2
+Rails: v 7.0.4
 
-* Ruby version
 
-* System dependencies
+Rename .env.sample to .env and add your credentials do postgresql database.
 
-* Configuration
+to install the project run:
+* `bundle install`
+* `rake db:create`
+* `rake db:migrate`
+* `yarn install`
 
-* Database creation
+Then you can run the server with `./bin/dev` and visit [localhost:3000](http://localhost:3000) to see the app in action.
 
-* Database initialization
+## Tests
+You can run the tests with `rspec` and also `yarn test`
 
-* How to run the test suite
+Additional methods are placed in `ApplicationHelper` and js sum method in the `app/javascript/calculator.js` file.
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
-
-* ...
+Have Fun!

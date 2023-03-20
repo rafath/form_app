@@ -5,7 +5,6 @@ export default class extends Controller {
   static values = { isFormValid: { type: Boolean, default: false } }
 
   submitForm(event) {
-    // let isValid = this.validateForm(this.formTarget);
     this.validateForm();
 
     if (!this.isFormValidValue) {

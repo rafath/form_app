@@ -14,7 +14,7 @@ SimpleForm.setup do |config|
   # stack. The options given below are used to wrap the
   # whole input.
 
-  config.wrappers :default, tag: 'div', class: '', error_class: '', valid_class: '' do |b|
+  config.wrappers :default, tag: 'div', class: 'mb-4', error_class: '', valid_class: '' do |b|
     b.use :html5
     b.use :placeholder
     b.optional :maxlength
@@ -27,7 +27,7 @@ SimpleForm.setup do |config|
     b.use :input,
       class: 'appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm',
       error_class: 'block w-full pr-10 border-red-300 text-red-900 placeholder-red-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md'
-    b.use :full_error, wrap_with: { tag: 'p', class: 'mt-2 text-sm text-red-600' }
+    b.use :error, wrap_with: { tag: 'p', class: 'mt-2 text-sm text-red-600' }
     b.use :hint,  wrap_with: { tag: :p, class: "mt-2 text-sm text-gray-500" }
   end
 
@@ -48,7 +48,7 @@ SimpleForm.setup do |config|
         class: "flex-1 min-w-0 block w-full px-3 py-2 rounded-none rounded-r-md focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300",
         error_class: "flex-1 min-w-0 block w-full px-3 py-2 rounded-none rounded-r-md focus:ring-red-500 focus:border-red-500 sm:text-sm border-red-300 text-red-900 placeholder-red-300"
     end
-    b.use :full_error, wrap_with: { tag: "p", class: "mt-2 text-sm text-red-600" }
+    b.use :error, wrap_with: { tag: "p", class: "mt-2 text-sm text-red-600" }
     b.use :hint,  wrap_with: { tag: :p, class: "mt-2 text-sm text-gray-500" }
   end
 
@@ -68,8 +68,8 @@ SimpleForm.setup do |config|
         class: "flex-1 min-w-0 block w-full px-3 py-2 rounded-none rounded-l-md focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300",
         error_class: "flex-1 min-w-0 block w-full px-3 py-2 rounded-none rounded-l-md focus:ring-red-500 focus:border-red-500 sm:text-sm border-red-300 text-red-900 placeholder-red-300"
       d.use :append
+    b.use :error, wrap_with: { tag: "p", class: "mt-2 text-sm text-red-600" }
     end
-    b.use :full_error, wrap_with: { tag: "p", class: "mt-2 text-sm text-red-600" }
     b.use :hint,  wrap_with: { tag: :p, class: "mt-2 text-sm text-gray-500" }
   end
 

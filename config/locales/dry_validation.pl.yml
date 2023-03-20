@@ -1,30 +1,11 @@
 pl:
   dry_validation:
     errors:
-      key?: 'jest wymagane'
-      int?: 'Wartość musi być liczbą'
-      float?: 'Wartość musi być liczbą zmiennoprzecinkową'
-      str?: 'Wartość musi być ciągiem znaków'
-      format?: 'Niepoprawny format wartości'
-      filled?: 'Wartość jest wymagana'
-      bool?: 'Wartość musi być wartością logiczną'
-      date?: 'Wartość musi być datą'
-      included_in?: 'Dozwolone wartości to: %{list}'
-      hash?: 'Niepoprawny typ danych'
-      array?: 'Niepoprawny typ danych'
-      empty?: 'Pole musi być puste'
-      min_size?: 'Minimalna liczba znaków to %{num}'
-      max_size?: 'Maksymalna liczba znaków to %{num}'
-      eql?: 'Niepoprawna wartość'
-      gteq?: 'Minimalnie %{num}'
-      lteq?: 'Maksymalnie %{num}'
-      too_early: 'Data nie może być wcześniejsza niż %{min}'
-      too_late: 'Data nie może być późniejsza niż %{max}'
-      future: 'Data nie może być w przyszłości'
-      past: 'Data nie może być wcześniej niż dziś'
       rules:
         email:
-          invalid_format: 'Niepoprawny format'
+          filled?: 'Please provide an email before submitting the form'
+          missing_at: 'Email must have an @ character'
+          invalid_format: 'Email must be valid'
 
-        first_name:
-          filled?: 'Podaj swoje imię'
+        name:
+          filled?: 'Please provide your name'

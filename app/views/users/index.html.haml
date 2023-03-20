@@ -1,16 +1,20 @@
-.my-2
-  %h2.text-left.font-medium.mb-4 Dokończ rejestrację uzupełniając poniższe pola
-  = simple_form_for(@user, url: users_path, html: { class: 'text-left w-full', novalidate: true }) do |f|
-    = f.input :name, required: true, autofocus: true
-    = f.input :email, required: true
+-#.my-2
+-#  %h2.text-left.font-medium.mb-4 Dokończ rejestrację uzupełniając poniższe pola
+-#  = debug(@user.name)
+-#  = simple_form_for(@user, url: users_path, html: { class: 'text-left w-full', novalidate: true }) do |f|
+-#    = f.input :name, required: true, autofocus: true
+-#    = f.input :email, required: true
+-#
+-#    .form-actions.text-center
+-#      = f.button :submit, 'Zarejestruj się', class: 'p-3 mt-3 text-black', data: { disable_with: 'chwileczkę' }
+-#
+.mx-auto{ class: 'w-2/3 lg:w-1/2' }
+  %h2.text-left.text-2xl.mb-4 Coming soon
+  = simple_form_for(@user, url: users_path, builder: SimpleForm::Tailwind::FormBuilder,
+    html: { novalidate: true }, data: { controller: 'form', form_target: 'form', action: 'submit->form#submitForm' }) do |f|
+    = f.error_notification
 
-    .form-actions.text-center
-      = f.button :submit, 'Zarejestruj się', class: 'p-3 mt-3 text-black', data: { disable_with: 'chwileczkę' }
+    = f.input :email, autocomplete: 'email', placeholder: 'email', label: 'Your email', require: true, input_html: { data: { action: 'keyup->form#validateEmail' } }
+    = f.input :name, autocomplete: 'name', placeholder: 'name', label: 'Your name', require: true, input_html: { data: { action: 'keyup->form#validateName' } }
 
-%hr
-= simple_form_for(@user, url: users_path, builder: SimpleForm::Tailwind::FormBuilder) do |f|
-  = f.error_notification
-  = f.input :name, autocomplete: "name", placeholder: "Alex Smith", label: "Display name"
-  = f.input :email, autocomplete: "email", placeholder: "asmith@example.com", label: "Email address"
-
-  = f.button :button, "Get started", class: "w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+    = f.submit 'Join the waiting list', class: 'submit-btn'

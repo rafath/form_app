@@ -11,6 +11,7 @@ class UserForm < ApplicationContract
   end
 
   rule(:email) do
+    key.failure(:missing_at) unless value.include?('@')
     key.failure(:invalid_format) unless EMAIL_REGEXP.match?(value)
   end
 end

@@ -6,6 +6,14 @@ class DryErrorsAdapter
 
   attr_reader :dry_errors, :errors
 
+  def self.human_attribute_name(attr, _options = {})
+    attr
+  end
+
+  def self.lookup_ancestors
+    [self]
+  end
+
   def initialize(dry_errors)
     @errors = ActiveModel::Errors.new(self)
     @dry_errors = dry_errors
@@ -22,15 +30,11 @@ class DryErrorsAdapter
     symbol
   end
 
+  # def respond_to_missing?(method_name, include_private = false)
+  #   method_name.to_s.start_with?('user_') || super
+  # end
+
   def read_attribute_for_validation(attr)
     send(attr)
-  end
-
-  def self.human_attribute_name(attr, _options = {})
-    attr
-  end
-
-  def self.lookup_ancestors
-    [self]
   end
 end

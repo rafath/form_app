@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-describe UsersController, type: :controller do
+describe UsersController do
   let(:post_params) do
     { user: { **attributes_for(:user) } }
-
   end
 
   describe 'POST #create' do
@@ -31,7 +30,7 @@ describe UsersController, type: :controller do
 
       it 'renders index page' do
         post_form
-        expect(response.status).to eq(422)
+        expect(response).to have_http_status(:unprocessable_entity)
       end
     end
 

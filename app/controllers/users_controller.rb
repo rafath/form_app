@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   private
 
   def permitted_parameters
-    params.permit(:authenticity_token, :commit, user: [:email, :name])
+    params.permit(:authenticity_token, :commit, user: %i[email name])
   end
 
   def form_validator

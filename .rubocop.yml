@@ -1,0 +1,221 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop/cop/internal_affairs
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+    - 'spec/fixtures/**/*'
+    - 'tmp/**/*'
+    - '.git/**/*'
+    - 'bin/*'
+    - 'db/schema.rb'
+    - 'db/migrate/**'
+
+  TargetRubyVersion: 2.7
+  SuggestExtensions: false
+
+Naming/PredicateName:
+  ForbiddenPrefixes:
+    - has_
+    - have_
+  # Method define macros for dynamically generated method.
+  MethodDefinitionMacros:
+    - define_method
+    - define_singleton_method
+    - def_node_matcher
+    - def_node_search
+
+Style/AccessorGrouping:
+  Exclude:
+    - lib/rubocop/formatter/base_formatter.rb
+    - lib/rubocop/cop/offense.rb
+
+Style/GuardClause:
+  Exclude:
+    - app/controllers/congresses/users/registrations_controller.rb
+
+Style/Documentation:
+  Enabled: false
+
+Style/FormatStringToken:
+  # Because we parse a lot of source codes from strings. Percent arrays
+  # look like unannotated format string tokens to this cop.
+  Exclude:
+    - spec/**/*
+
+Style/IpAddresses:
+  # The test for this cop includes strings that would cause offenses
+  Exclude:
+    - spec/rubocop/cop/style/ip_addresses_spec.rb
+
+Style/RedundantFetchBlock:
+  Enabled: false
+
+Style/OptionalBooleanParameter:
+  Enabled: false
+
+Layout/EndOfLine:
+  EnforcedStyle: lf
+
+Layout/ClassStructure:
+  Enabled: true
+
+Layout/RedundantLineBreak:
+  Enabled: true
+
+Layout/TrailingWhitespace:
+  AllowInHeredoc: false
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - 'spec/**/*.rb'
+
+Lint/AssignmentInCondition:
+  Exclude:
+    - app/controllers/congresses/users/registrations_controller.rb
+
+Layout/HashAlignment:
+  EnforcedHashRocketStyle:
+    - key
+    - table
+  EnforcedColonStyle:
+    - key
+    - table
+
+Layout/LineLength:
+  Max: 120
+  AllowedPatterns:
+    - !ruby/regexp /\A +(it|describe|context|shared_examples|include_examples|it_behaves_like) ["']/
+  Exclude:
+    - 'config/**/*'
+    - 'db/seeds/**/*'
+    - 'app/helpers/**/*'
+
+Lint/InterpolationCheck:
+  Exclude:
+    - 'spec/**/*.rb'
+
+Lint/UselessAccessModifier:
+  MethodCreatingMethods:
+    - 'def_matcher'
+    - 'def_node_matcher'
+
+Metrics/AbcSize:
+  Max: 30
+  Exclude:
+    - 'app/services/custom_devise_failure.rb'
+    - 'app/controllers/congresses/users/registrations_controller.rb'
+    - 'app/controllers/application_controller.rb'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'spec/**/*.rb'
+    - '**/*.gemspec'
+    - 'config/**/*'
+    - 'app/contracts/contract_attachmentable.rb'
+
+Metrics/ClassLength:
+  Exclude:
+    - lib/rubocop/config_obsoletion.rb
+    - lib/rubocop/options.rb
+
+Metrics/ModuleLength:
+  Exclude:
+    - 'spec/**/*.rb'
+
+Naming/InclusiveLanguage:
+  Enabled: true
+  CheckStrings: true
+  FlaggedTerms:
+    auto-correct:
+      Suggestions:
+        - autocorrect
+    auto_correct:
+      Suggestions:
+        - autocorrect
+    behaviour:
+      Suggestions:
+        - behavior
+    offence:
+      Suggestions:
+        - offense
+  Exclude:
+    - lib/rubocop/cop/naming/inclusive_language.rb
+    - lib/rubocop/cop/mixin/auto_corrector.rb
+    - spec/rubocop/cop/naming/inclusive_language_spec.rb
+
+Rails/LexicallyScopedActionFilter:
+  Enabled: false
+
+Rails/UnknownEnv:
+  Environments:
+    - production
+    - development
+    - test
+    - staging
+
+RSpec/FilePath:
+  Exclude:
+    - spec/rubocop/cop/internal_affairs/redundant_let_rubocop_config_new_spec.rb
+    - spec/rubocop/formatter/junit_formatter_spec.rb
+
+RSpec/MessageSpies:
+  EnforcedStyle: receive
+
+RSpec/MultipleExpectations:
+  Max: 5
+
+RSpec/ExampleLength:
+  Max: 6
+  Exclude:
+    - 'spec/features/**/*'
+
+RSpec/NestedGroups:
+  Max: 7
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+RSpec/PredicateMatcher:
+  Strict: false
+
+Performance/CollectionLiteralInLoop:
+  Exclude:
+    - 'Rakefile'
+    - 'spec/**/*.rb'
+
+Performance/EndWith:
+  SafeMultiline: false
+
+Performance/StartWith:
+  SafeMultiline: false
+
+RSpec/StubbedMock:
+  Enabled: false
+
+InternalAffairs/ExampleDescription:
+  Include:
+    - 'spec/rubocop/cop/**/*.rb'
+
+InternalAffairs/UndefinedConfig:
+  Include:
+    - 'lib/rubocop/cop/**/*.rb'
+  Exclude:
+    - 'lib/rubocop/cop/correctors/**/*.rb'
+    - 'lib/rubocop/cop/mixin/**/*.rb'
+
+InternalAffairs/StyleDetectedApiUse:
+  Exclude:
+    - 'lib/rubocop/cop/mixin/percent_array.rb'
+
+Gemspec/DependencyVersion:
+  Enabled: true

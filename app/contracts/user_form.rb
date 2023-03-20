@@ -3,7 +3,7 @@
 class UserForm < ApplicationContract
   include ActiveModel::Model
 
-  EMAIL_REGEXP = /\A[\w+\-.]+@[a-z\d-]+(\.[a-z\d-]+)*\.[a-z]+\z/i
+  EMAIL_REGEXP = /\A[\w+\-.]+@[a-z\d-]+(\.[a-z\d-]+)*\.[a-z]+\z/i.freeze
 
   params do
     required(:email).filled(:string)

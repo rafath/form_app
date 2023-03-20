@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe 'Registration Form', type: :feature do
+describe 'Registration Form' do
   let(:user) { build(:user) }
 
   before { visit root_path }
@@ -16,7 +16,6 @@ describe 'Registration Form', type: :feature do
   end
 
   context 'when user have invalid values', js: true do
-
     it 'does not allow submit form' do
       click_button 'Join the waiting list'
 

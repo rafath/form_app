@@ -1,0 +1,16 @@
+.my-2
+  %h2.text-left.font-medium.mb-4 Dokończ rejestrację uzupełniając poniższe pola
+  = simple_form_for(@user, url: users_path, html: { class: 'text-left w-full', novalidate: true }) do |f|
+    = f.input :name, required: true, autofocus: true
+    = f.input :email, required: true
+
+    .form-actions.text-center
+      = f.button :submit, 'Zarejestruj się', class: 'p-3 mt-3 text-black', data: { disable_with: 'chwileczkę' }
+
+%hr
+= simple_form_for(@user, url: users_path, builder: SimpleForm::Tailwind::FormBuilder) do |f|
+  = f.error_notification
+  = f.input :name, autocomplete: "name", placeholder: "Alex Smith", label: "Display name"
+  = f.input :email, autocomplete: "email", placeholder: "asmith@example.com", label: "Email address"
+
+  = f.button :button, "Get started", class: "w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
